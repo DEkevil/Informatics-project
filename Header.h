@@ -30,7 +30,7 @@ typedef Node* Nodeptr;
 //sanPham SanPham[MAX];
 
 //______________________________________________________________
-void xuatTieuDeTrang();
+//void xuatTieuDeTrang();
 
 void khoitao(Nodeptr& list);
 int isEmpty(Nodeptr list);
@@ -42,4 +42,4 @@ Nodeptr add_sanPham(Nodeptr& list, sanPham sp);
 void nhap_san_pham(Nodeptr& list);
 void xuat_ds_san_pham(Nodeptr list);
 
-
+bool check(Nodeptr& list, char* code);

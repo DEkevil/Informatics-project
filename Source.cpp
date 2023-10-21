@@ -6,13 +6,15 @@ void khoitao(Nodeptr& list)
 }
 int isEmpty(Nodeptr list)
 {
-	if (list == NULL) {
+	/*if (list == NULL) {
 		return 1;
 	}
 	else {
 		return 0;
-	}
+	}*/
+	return list == NULL ? 1 : 0;
 }
+
 void giaiPhong(Nodeptr& list)
 {
 	Nodeptr p = list;
@@ -36,12 +38,37 @@ Nodeptr create_san_pham(sanPham sp)
 
 Nodeptr add_sanPham(Nodeptr& list, sanPham sp) //thêm đầu
 {
-	Nodeptr p = create_san_pham(sp);
-	p->next = list;
-	list = p;
-	return p;
+	//Nodeptr p = create_san_pham(sp);
+	//p->next = list;
+	//list = p;
+	//return p;
+
+	Nodeptr p;
+	p = create_san_pham(sp);
+	if (list == NULL)
+	{
+		list = p;
+	}
+	else
+	{
+		p->next=list;
+		list=p;
+	}
+
+	return list;
 }
 //hàm kiểm tra trùng mã
+bool check(Nodeptr& list, char* code)
+{
+	Nodeptr p = list;
+	while (p != NULL)
+	{
+		if (strcmp(p->data.maSanPham, code) == 0)
+			return true;
+		p = p->next;
+	}
+	return false;
+}
 
 //void nhap_san_pham(Nodeptr& list)
 //{
@@ -104,8 +131,14 @@ void nhap_san_pham(Nodeptr& list) {
 		cout << "Nhap ten san pham (nhap '0' de thoat): ";
 		cin.ignore();
 		cin.getline(sp.tenSanPham, sizeof(sp.tenSanPham));
-
-		if (strcmp(sp.tenSanPham, "0") == 0) {
+		//while (check(list, sp.maSanPham))
+		//{
+		//	cout << "\nMa san pham bi trung";
+		//	cout << "\nNhap lai ma san pham: ";
+		//	cin.getline(sp.maSanPham, 3);
+		//}
+		if (strcmp(sp.tenSanPham, "0") == 0)
+		{
 			break;
 		}
 
