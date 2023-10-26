@@ -18,19 +18,10 @@
 void main()
 {
 	SanPham sp;
-	/*nhap_SanPham(sp);
-	xuat_SanPham(sp);*/
 	
 	Nhap_va_HienThiDS();
 
-	//SanPham sp;
-	//DS_SanPham ds;
 
-	//nhap_DS_SP(ds);
-
-	///*system("cls");*/
-
-	//xuat_DS_SP(ds);
 
 
 
@@ -38,3 +29,4 @@ void main()
 
 	system("pause");
 }
+

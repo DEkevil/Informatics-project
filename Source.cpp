@@ -181,21 +181,23 @@
 
 void nhap_SanPham(SanPham& sp)
 {
-	/*cin.ignore();*/
+	cin.ignore();
 	cout << "Nhap ma san pham: ";
-	cin.ignore();
-	cin.getline(sp.maSP, 5); //kiểu char luôn dùng cin.getline
+	cin.getline(sp.maSP, 30); //kiểu char luôn dùng cin.getline
+
 	cout << "Nhap ten san pham: ";
-	cin.ignore();
 	cin.getline(sp.tenSP, 30);
+
 	cout << "Nhap gioi tinh san pham: ";
-	cin.ignore();
 	cin.getline(sp.gioiTinhSP, 5);
+
 	cout << "Nhap thoi han bao hanh san pham: ";
 	cin >> sp.baoHanhSP;
+
 	cout << "Nhap gia tien san pham: ";
 	cin >> sp.giaTienSP;
 }
+
 void xuat_SanPham(SanPham sp)
 {
 	//cout << setw(0) << "Ten san pham" << setw(15) << "ma san pham" << setw(15) << "gioi tinh" << setw(15) << "bao hanh" << setw(15) << "Gia tien" << endl;
@@ -206,18 +208,22 @@ void nhap_DS_SP(DS_SanPham& ds)
 {
 	cout << "Nhap so luong san pham can hien thi: ";
 	cin >> ds.soSanPham;
+
 	cout << "Nhap danh sach san pham: ";
 	cout << endl;
+
 	for (int i = 1; i <= ds.soSanPham; i++)
 	{
 		cout << "San pham thu " << i << endl;
 		nhap_SanPham(ds.ds_SP[i]);
 	}
 }
+
 void xuat_DS_SP(DS_SanPham& ds)
 {
 	cout << "Co " << ds.soSanPham << " trong cua hang."<<endl;
 	cout << setw(0) << "Ten san pham" << setw(15) << "ma san pham" << setw(15) << "gioi tinh" << setw(15) << "bao hanh" << setw(15) << "Gia tien" << endl;
+
 	for (int i = 1; i <= ds.soSanPham; i++)
 	{
 		xuat_SanPham(ds.ds_SP[i]);
@@ -238,3 +244,5 @@ void Nhap_va_HienThiDS()
 
 
 }
+
+

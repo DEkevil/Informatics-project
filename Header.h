@@ -50,7 +50,7 @@ const int MAX = 100;
 
 struct SanPham //túi sách
 {
-	char maSP[5];
+	char maSP[30];
 	char tenSP[30];
 	char gioiTinhSP[5]; //túi sách có cho nam và nữ
 	int baoHanhSP; //đơn vị tháng
@@ -70,3 +70,4 @@ void nhap_DS_SP(DS_SanPham& ds);
 void xuat_DS_SP(DS_SanPham& ds);
 
 void Nhap_va_HienThiDS();
+
