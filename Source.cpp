@@ -179,7 +179,7 @@
 
 #include"Header.h"
 
-void nhap_SanPham(SanPham& sp)
+void nhap_SanPham(SanPham& sp) //thêm theo thứ tự từ trên xuống
 {
 	cin.ignore();
 	cout << "Nhap ma san pham: ";
@@ -251,7 +251,7 @@ void xoa_SanPham(DS_SanPham& ds)
 	cout << "Nhap vi tri san pham can xoa co tren danh sach: ";
 	cin >> pos;
 
-	while (pos < 1 || pos >= ds.soSanPham)
+	while (pos < 1 || pos > ds.soSanPham)
 	{
 		cout << "So nhap nam ngoai danh sach, xin moi nhap lai:	";
 		cin >> pos;
@@ -262,4 +262,11 @@ void xoa_SanPham(DS_SanPham& ds)
 		ds.ds_SP[i] = ds.ds_SP[i + 1];
 	}
 	ds.soSanPham--;
+}
+
+void them_SanPham_Cuoi(DS_SanPham& ds)
+{
+	SanPham sp;
+	ds.soSanPham++;
+	nhap_SanPham(ds.ds_SP[ds.soSanPham]);
 }
