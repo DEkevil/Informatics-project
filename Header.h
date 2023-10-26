@@ -71,3 +71,4 @@ void xuat_DS_SP(DS_SanPham& ds);
 
 void Nhap_va_HienThiDS();
 
+void xoa_SanPham(DS_SanPham& sp);

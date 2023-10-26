@@ -216,6 +216,8 @@ void nhap_DS_SP(DS_SanPham& ds)
 	{
 		cout << "San pham thu " << i << endl;
 		nhap_SanPham(ds.ds_SP[i]);
+		cout << endl;
+
 	}
 }
 
@@ -231,18 +233,33 @@ void xuat_DS_SP(DS_SanPham& ds)
 	}
 }
 
-void Nhap_va_HienThiDS()
+//void Nhap_va_HienThiDS()
+//{
+//	SanPham sp;
+//	DS_SanPham ds;
+//	
+//	nhap_DS_SP(ds);
+//
+//	system("cls");
+//
+//	xuat_DS_SP(ds);
+//}
+
+void xoa_SanPham(DS_SanPham& ds)
 {
-	SanPham sp;
-	DS_SanPham ds;
-	
-	nhap_DS_SP(ds);
+	int pos;
+	cout << "Nhap vi tri san pham can xoa co tren danh sach: ";
+	cin >> pos;
 
-	system("cls");
+	while (pos < 1 || pos >= ds.soSanPham)
+	{
+		cout << "So nhap nam ngoai danh sach, xin moi nhap lai:	";
+		cin >> pos;
+	}
 
-	xuat_DS_SP(ds);
-
-
+	for (int i = pos; i <= ds.soSanPham; i++)
+	{
+		ds.ds_SP[i] = ds.ds_SP[i + 1];
+	}
+	ds.soSanPham--;
 }
-
-

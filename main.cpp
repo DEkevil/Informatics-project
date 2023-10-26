@@ -18,10 +18,15 @@
 void main()
 {
 	SanPham sp;
+	DS_SanPham ds;
 	
-	Nhap_va_HienThiDS();
+	nhap_DS_SP(ds);
+	system("cls");
+	xuat_DS_SP(ds);
 
-
+	xoa_SanPham(ds);
+	system("cls");
+	xuat_DS_SP(ds);
 
 
 
