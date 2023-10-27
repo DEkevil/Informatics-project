@@ -1,4 +1,4 @@
-//#include"Header.h"
+﻿//#include"Header.h"
 //
 //
 //void main()
@@ -22,15 +22,6 @@ void main()
 	
 	nhap_DS_SP(ds);
 	system("cls");
-	/*xuat_DS_SP(ds);*/
-
-	//them_SanPham_Cuoi(ds);
-	//xuat_DS_SP(ds);
-
-
-	//xoa_SanPham(ds);
-	//system("cls");
-	//xuat_DS_SP(ds);
 
 	do {
 		xuat_DS_SP(ds);
@@ -38,6 +29,8 @@ void main()
 
 		cout << "1. Them san pham.";
 		cout << "\n2. Xoa san pham.";
+		cout << "\n3. Xep gia tien tang dan.";
+		cout << "\n4. Xep gia tien giam dan.";
 		cout << "\n0. Thoat.";
 
 
@@ -56,6 +49,7 @@ void main()
 
 			them_SanPham_Cuoi(ds);
 			break;
+
 		case 2:
 			system("cls");
 			xuat_DS_SP(ds);
@@ -65,6 +59,21 @@ void main()
 
 			xoa_SanPham(ds);
 			break;
+
+		case 3: //Cần tạo một menu khi bấm vào xếp giá tiền thì sẽ có 2 lựa chọn tăng dần hoặc giảm dần thay vì chọn ở main menu
+			system("cls");
+			xuat_DS_SP(ds);
+
+			xep_giaTienSP_tangDan(ds);
+			break;
+
+		case 4: //đang bị l
+			system("cls");
+			xuat_DS_SP(ds);
+
+			xep_giaTienSP_giamDan(ds);
+			break;
+
 		case 0:
 			exit(choose);
 			break;
@@ -75,6 +84,13 @@ void main()
 		system("cls");
 
 	} while (true);
+
+
+	//for (int i = 0; i <= ds.soSanPham; i++)
+	//{
+	//	xuat_SanPham(ds.ds_SP[i]);
+	//	cout << endl;
+	//}
 
 
 

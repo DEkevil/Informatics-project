@@ -224,10 +224,11 @@ void nhap_DS_SP(DS_SanPham& ds)
 void xuat_DS_SP(DS_SanPham& ds)
 {
 	cout << "Co " << ds.soSanPham << " trong cua hang."<<endl;
-	cout << setw(0) << "Ten san pham" << setw(15) << "ma san pham" << setw(15) << "gioi tinh" << setw(15) << "bao hanh" << setw(15) << "Gia tien" << endl;
+	cout << setw(0) <<"STT" << setw(10) << "Ten san pham" << setw(15) << "ma san pham" << setw(15) << "gioi tinh" << setw(15) << "bao hanh" << setw(15) << "Gia tien" << endl;
 
 	for (int i = 1; i <= ds.soSanPham; i++)
-	{
+	{	
+		cout << i << ". ";
 		xuat_SanPham(ds.ds_SP[i]);
 		cout << endl;
 	}
@@ -270,3 +271,52 @@ void them_SanPham_Cuoi(DS_SanPham& ds)
 	ds.soSanPham++;
 	nhap_SanPham(ds.ds_SP[ds.soSanPham]);
 }
+
+
+//_____________________________________________________________________
+
+//void InterchangeSort(int a[], int n)
+//{
+//	for (int i = 0; i < n - 1; i++)
+//		for (int j = i + 1; j < n; j++)
+//			if (a[i] > a[j])
+//				swap(a[i], a[j]);
+//}
+
+void xep_giaTienSP_tangDan(DS_SanPham& ds) //InterchangeSort
+{
+	SanPham sp;
+
+	int n = ds.soSanPham;
+
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (ds.ds_SP[i].giaTienSP > ds.ds_SP[j].giaTienSP)
+				swap(ds.ds_SP[i], ds.ds_SP[j]);
+		}
+	}
+}
+
+void xep_giaTienSP_giamDan(DS_SanPham& ds) //InterchangeSort
+{
+	SanPham sp;
+
+	int n = ds.soSanPham;
+
+	for (int i = 1; i <= n; i++)
+	{
+		for (int j = i + 1; j <= n; j++)
+		{
+			if (ds.ds_SP[i].giaTienSP < ds.ds_SP[j].giaTienSP)
+				swap(ds.ds_SP[i], ds.ds_SP[j]);
+		}
+	}
+}
+
+//void xep_gia_tien_tang_dan(DS_SanPham& ds)
+//{
+//	SanPham sp;
+//	InterchangeSort(ds.ds_SP(sp.giaTienSP), ds.soSanPham);
+//}
