@@ -188,7 +188,7 @@ void nhap_SanPham(SanPham& sp) //thêm theo thứ tự từ trên xuống
 	cout << "Nhap ten san pham: ";
 	cin.getline(sp.tenSP, 30);
 
-	cout << "Nhap gioi tinh san pham: ";
+	cout << "Nhap gioi tinh cua san pham: ";
 	cin.getline(sp.gioiTinhSP, 5);
 
 	cout << "Nhap thoi han bao hanh san pham: ";
@@ -201,9 +201,9 @@ void nhap_SanPham(SanPham& sp) //thêm theo thứ tự từ trên xuống
 void xuat_SanPham(SanPham sp)
 {
 	//cout << setw(0) << "Ten san pham" << setw(15) << "ma san pham" << setw(15) << "gioi tinh" << setw(15) << "bao hanh" << setw(15) << "Gia tien" << endl;
-	cout << setw(0) << sp.maSP << setw(15) << sp.tenSP << setw(15) << sp.gioiTinhSP << setw(15) << sp.baoHanhSP << setw(15) << sp.giaTienSP << endl;
+	cout << setw(10) << sp.maSP << setw(20) << sp.tenSP << setw(20) << sp.gioiTinhSP << setw(20) << sp.baoHanhSP << setw(20)
+		<< sp.giaTienSP << endl;
 }
-
 void nhap_DS_SP(DS_SanPham& ds)
 {
 	cout << "Nhap so luong san pham can hien thi: ";
@@ -224,7 +224,8 @@ void nhap_DS_SP(DS_SanPham& ds)
 void xuat_DS_SP(DS_SanPham& ds)
 {
 	cout << "Co " << ds.soSanPham << " trong cua hang."<<endl;
-	cout << setw(0) <<"STT" << setw(10) << "Ten san pham" << setw(15) << "ma san pham" << setw(15) << "gioi tinh" << setw(15) << "bao hanh" << setw(15) << "Gia tien" << endl;
+	cout << setw(0) <<"STT" << setw(17) << "Ten san pham" << setw(17) << "Ma san pham" << setw(20) << "Gioi tinh" 
+		<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
 
 	for (int i = 1; i <= ds.soSanPham; i++)
 	{	
