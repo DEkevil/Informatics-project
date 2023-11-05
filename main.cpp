@@ -22,7 +22,9 @@ void main()
 	do {
 		int chose;
 		cout << "\n              CHUONG TRINH PHAN MEM BAN SAN PHAM QUAN AO";
+		cout << "\n                       Author : Luong Hieu Thuan";
 		cout << "\n 1. Lam moi chuong trinh cua ban( them san pham,xoa sua bla bla)";
+		cout << "\n 2. Nhap file san pham da co( update code later)";
 		cout << "\n 0. de thoat.";
 		cout << endl;
 		cout << "\n Moi ban chon :";
