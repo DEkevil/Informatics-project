@@ -59,7 +59,7 @@ struct SanPham //túi sách
 
 struct DS_SanPham
 {
-	int soSanPham;
+	int soSanPham = 0;
 	SanPham ds_SP[MAX];
 };
 

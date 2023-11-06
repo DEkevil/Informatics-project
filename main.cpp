@@ -13,6 +13,94 @@
 //	system("pause");
 //}
 
+//cmt quan trọng, ko xóa
+
+//#include"Header.h"
+//
+//void main()
+//{
+//	SanPham sp;
+//	DS_SanPham ds;
+//
+//
+//	cout << "Chao mung den voi trang web.";
+//	cout << "\n1. Admin";
+//	cout << "\n2. Khach hang";
+//	cout << "\n3. Thoat";
+//	cout << "\nBan la: ";
+//
+//	int who;
+//	
+//	do { //menu lựa chọn giữa admin và khách hàng
+//		cin >> who;
+//		switch (who)
+//		{
+//		case 1: //dành cho admin
+//			xuat_DS_SP(ds);
+//
+//			if (ds.soSanPham == 0)
+//			{
+//				system("cls");
+//				xuat_DS_SP(ds);
+//				cout << "\n1. Them thu cong san pham moi.";
+//				cout << "\n2. Nhap danh sach san pham da co.";
+//				cout << "\nMoi nhap lua chon: ";
+//				int themChon;
+//				do
+//				{
+//					system("cls");
+//					xuat_DS_SP(ds);
+//					cout << "\n1. Them thu cong san pham moi.";
+//					cout << "\n2. Nhap danh sach san pham da co.";
+//					cout << "\n0. Thoat.";
+//					cout << "\nMoi nhap lua chon: ";
+//					cin >> themChon;
+//					if (themChon == 1)
+//					{
+//						nhap_DS_SP(ds);
+//						system("cls");
+//						xuat_DS_SP(ds);
+//					}
+//				} while (themChon != 0);
+//			}
+//
+//			system("cls");
+//			xuat_DS_SP(ds);
+//			cout << "\n1. Them thu cong san pham moi.";
+//			cout << "\n2. Nhap danh sach san pham da co.";
+//			cout << "\n3. Xoa san pham.";
+//			cout << "\n4. Sap xep san pham."; //hai lựa chọn tăng dần hoặc giảm dần.
+//			cout << "\n0. Thoat.";
+//			cout << "\n5. TEST";
+//			cout << "\nMoi nhap lua chon: ";
+//
+//			int themChon2;
+//			cin >> themChon2;
+//			if (themChon2 == 5)
+//				cout << "test case 1 menu 1";
+//
+//
+//			cout << endl;
+//			//break;
+//		case 2: //dành cho người mua hàng
+//			cout << "test 2";
+//			break;
+//		case 3: //thoát
+//			break;
+//
+//		default:
+//			break;
+//		}
+//	} while (who!=3);
+//
+//	cout << "\nVang ra khoi menu 1, chuan bi ket thuc [TEST]";
+//	system("pause");
+//
+//
+//}
+
+//_______________________
+
 #include"Header.h"
 
 void main()
@@ -92,6 +180,7 @@ void main()
 		} while (true);
 	} while (true);
 }
+
 //	do {
 //		xuat_DS_SP(ds);
 //		cout << endl;

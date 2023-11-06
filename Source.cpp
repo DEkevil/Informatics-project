@@ -223,16 +223,22 @@ void nhap_DS_SP(DS_SanPham& ds)
 
 void xuat_DS_SP(DS_SanPham& ds)
 {
-	cout << "Co " << ds.soSanPham << " trong cua hang."<<endl;
-	cout << setw(0) <<"STT" << setw(17) << "Ten san pham" << setw(17) << "Ma san pham" << setw(20) << "Gioi tinh" 
-		<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
+	if (ds.soSanPham == 0)
+		cout << "Khong co san pham trong danh sach. Ban co muon: ";
+	else
+	{
+		cout << "Co " << ds.soSanPham << " trong cua hang." << endl;
+		cout << setw(0) << "STT" << setw(17) << "Ten san pham" << setw(17) << "Ma san pham" << setw(20) << "Gioi tinh"
+			<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
 
-	for (int i = 1; i <= ds.soSanPham; i++)
-	{	
-		cout << i << ". ";
-		xuat_SanPham(ds.ds_SP[i]);
-		cout << endl;
+		for (int i = 1; i <= ds.soSanPham; i++)
+		{
+			cout << i << ". ";
+			xuat_SanPham(ds.ds_SP[i]);
+			cout << endl;
+		}
 	}
+
 }
 
 //void Nhap_va_HienThiDS()
