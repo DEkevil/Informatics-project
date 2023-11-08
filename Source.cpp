@@ -197,13 +197,13 @@ void nhap_SanPham(SanPham& sp) //thêm theo thứ tự từ trên xuống
 	cout << "Nhap gia tien san pham: ";
 	cin >> sp.giaTienSP;
 }
-
 void xuat_SanPham(SanPham sp)
 {
 	//cout << setw(0) << "Ten san pham" << setw(15) << "ma san pham" << setw(15) << "gioi tinh" << setw(15) << "bao hanh" << setw(15) << "Gia tien" << endl;
 	cout << setw(10) << sp.maSP << setw(20) << sp.tenSP << setw(20) << sp.gioiTinhSP << setw(20) << sp.baoHanhSP << setw(20)
 		<< sp.giaTienSP << endl;
 }
+
 void nhap_DS_SP(DS_SanPham& ds)
 {
 	cout << "Nhap so luong san pham can hien thi: ";
@@ -212,7 +212,7 @@ void nhap_DS_SP(DS_SanPham& ds)
 	cout << "Nhap danh sach san pham: ";
 	cout << endl;
 
-	for (int i = 1; i <= ds.soSanPham; i++)
+	for (int i = 0; i < ds.soSanPham; i++)
 	{
 		cout << "San pham thu " << i << endl;
 		nhap_SanPham(ds.ds_SP[i]);
@@ -220,7 +220,6 @@ void nhap_DS_SP(DS_SanPham& ds)
 
 	}
 }
-
 void xuat_DS_SP(DS_SanPham& ds)
 {
 	if (ds.soSanPham == 0)
@@ -231,9 +230,9 @@ void xuat_DS_SP(DS_SanPham& ds)
 		cout << setw(0) << "STT" << setw(17) << "Ten san pham" << setw(17) << "Ma san pham" << setw(20) << "Gioi tinh"
 			<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
 
-		for (int i = 1; i <= ds.soSanPham; i++)
+		for (int i = 0; i < ds.soSanPham; i++)
 		{
-			cout << i << ". ";
+			cout << i+1 << ". ";
 			xuat_SanPham(ds.ds_SP[i]);
 			cout << endl;
 		}
@@ -271,7 +270,6 @@ void xoa_SanPham(DS_SanPham& ds)
 	}
 	ds.soSanPham--;
 }
-
 void them_SanPham_Cuoi(DS_SanPham& ds)
 {
 	SanPham sp;
@@ -305,7 +303,6 @@ void xep_giaTienSP_tangDan(DS_SanPham& ds) //InterchangeSort
 		}
 	}
 }
-
 void xep_giaTienSP_giamDan(DS_SanPham& ds) //InterchangeSort
 {
 	SanPham sp;
@@ -327,3 +324,56 @@ void xep_giaTienSP_giamDan(DS_SanPham& ds) //InterchangeSort
 //	SanPham sp;
 //	InterchangeSort(ds.ds_SP(sp.giaTienSP), ds.soSanPham);
 //}
+
+//_____________________________________________________________________
+
+void docFile(const char* tenfile, DS_SanPham& ds) 
+{
+	FILE* file;
+	errno_t file_in;
+
+	file_in = fopen_s(&file, tenfile, "r");
+	if (file_in != 0) {
+		cout << "Khong doc duoc file." << file_in << endl;
+		return;
+	}
+	int i = 0;
+	SanPham sp;
+
+	// Bỏ hàng đầu
+	//fscanf(file, "%*[^\n]\n");
+
+	//char maSP[30]; => %s : kiểu string or char
+	//char tenSP[30]; => % s : kiểu string or char
+	//char gioiTinhSP[5]; => % s : kiểu string or char
+	//int baoHanhSP; => %d: kiểu int
+	//float giaTienSP; => %f: kiểu float
+
+	while (fscanf(file, "%s %s %s %d %f\n", sp.maSP, sp.tenSP, sp.gioiTinhSP, &sp.baoHanhSP, &sp.giaTienSP) == 5) {
+		ds.ds_SP[i++] = sp;
+	}
+	ds.soSanPham = i;
+
+	fclose(file);
+}
+void xuatFile(const char* tenfile, const DS_SanPham& ds)
+{
+	FILE* file = nullptr;
+	errno_t file_in;
+
+	file_in = fopen_s(&file, tenfile, "w");
+	if (file_in != 0) {
+		cout << "Khong the ghi file." << endl;
+		return;
+	}
+
+	/*fprintf(file, "Ten san pham      Ma san pham           Gioi tinh            Bao hanh            Gia tien" << endl;);*/
+	fprintf(file, "MaSP\tTenSP\tGTSP\tBH\t\tGiaTien\n");
+	for (int i = 0; i < ds.soSanPham; ++i)
+	{
+		fprintf(file, "%s \t%s \t%s \t\t%d \t\t%.2f\n", ds.ds_SP[i].maSP, ds.ds_SP[i].tenSP, ds.ds_SP[i].gioiTinhSP, ds.ds_SP[i].baoHanhSP, ds.ds_SP[i].giaTienSP);
+	}
+
+	fclose(file);
+}
+
