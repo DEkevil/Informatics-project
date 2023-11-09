@@ -122,6 +122,7 @@ void main()
 			cout << "\n2. SP: Xoa san pham.";
 			cout << "\n3.SP: Xep gia tien tang dan.";
 			cout << "\n4.SP: Xep gia tien giam dan.";
+			cout << "\n5. Xuat File";
 			cout << "\n99. Thoat.";
 			int chon;
 			cout << "\nMoi ban nhap lua chon: ";

@@ -1,7 +1,7 @@
 MaSP	TenSP	GTSP	BH		GiaTien
-D001 	test1 	nam 		12 		1000.00
+D0010 	test1 	nam 		12 		1000.00
 D002 	test2 	nu 		24 		2000.00
-D001 	test1 	nam 		12 		1000.00
+D001 	thuan 	nam 		12 		1000.00
 D002 	test2 	nu 		24 		2000.00
 D001 	test1 	nam 		12 		1000.00
 D002 	test2 	nu 		24 		2000.00
