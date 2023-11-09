@@ -73,7 +73,7 @@ void Nhap_va_HienThiDS();
 
 void xoa_SanPham(DS_SanPham& ds);
 void them_SanPham_Cuoi(DS_SanPham& ds);
-
+void menu1(DS_SanPham ds);
 void xep_giaTienSP_tangDan(DS_SanPham& ds);
 void xep_giaTienSP_giamDan(DS_SanPham& ds);
 
