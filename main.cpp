@@ -105,6 +105,7 @@ void main()
 	DS_SanPham ds;
 	int chose;
 	cout << "\n              CHUONG TRINH PHAN MEM BAN SAN PHAM QUAN AO";
+	cout << "\n                             Do An Tin Hoc";
 	cout << "\n                       Author : Luong Hieu Thuan";
 	cout << "\n==================================MENU==========================================";
 	cout << "\n 1. Lam moi chuong trinh cua ban(Nhap va xuat danh sach san pham)";
@@ -171,6 +172,12 @@ void main()
 				break;
 			}
 		} while (true);
+	}
+	else if (chose == 2)
+	{
+		docFile("DanhSach.txt", ds);
+		xuat_DS_SP(ds);
+		xuatFile("Testxuatfile.txt", ds);
 	}
 	else if (chose == 3)
 	{

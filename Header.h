@@ -63,17 +63,24 @@ struct DS_SanPham
 	int soSanPham = 0;
 	SanPham ds_SP[MAX];
 };
+struct DonHang 
+{
 
+};
+struct DS_DonHang
+{
+
+};
 void nhap_SanPham(SanPham& sp);
 void xuat_SanPham(SanPham sp);
 
 void nhap_DS_SP(DS_SanPham& ds);
 void xuat_DS_SP(DS_SanPham& ds);
-void Nhap_va_HienThiDS();
 
 void xoa_SanPham(DS_SanPham& ds);
 void them_SanPham_Cuoi(DS_SanPham& ds);
 void menu1(DS_SanPham ds);
+
 void xep_giaTienSP_tangDan(DS_SanPham& ds);
 void xep_giaTienSP_giamDan(DS_SanPham& ds);
 

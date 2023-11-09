@@ -183,12 +183,16 @@ void nhap_SanPham(SanPham& sp) //thêm theo thứ tự từ trên xuống
 	cin.ignore();
 	cout << "Nhap ma san pham: ";
 	cin.getline(sp.maSP, 30); //kiểu char luôn dùng cin.getline
+
 	cout << "Nhap ten san pham: ";
 	cin.getline(sp.tenSP, 30);
+
 	cout << "Nhap gioi tinh cua san pham: ";
 	cin.getline(sp.gioiTinhSP, 5);
+
 	cout << "Nhap thoi han bao hanh san pham: ";
 	cin >> sp.baoHanhSP;
+
 	cout << "Nhap gia tien san pham: ";
 	cin >> sp.giaTienSP;
 }
@@ -217,17 +221,19 @@ void nhap_DS_SP(DS_SanPham& ds)
 }
 void xuat_DS_SP(DS_SanPham& ds)
 {
+	cout << "\n====================================================================================================";
+	cout << endl;
 		cout << "Co " << ds.soSanPham << " trong cua hang." << endl;
 		cout << setw(0) << "STT" << setw(17) << "Ten san pham" << setw(17) << "Ma san pham" << setw(20) << "Gioi tinh"
 			<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
-
 		for (int i = 1; i <= ds.soSanPham; i++)
 		{
 			cout << i + 1 << ". ";
 			xuat_SanPham(ds.ds_SP[i]);
 			cout << endl;
 		}
-	
+		cout << "\n====================================================================================================";
+		cout << endl;
 }
 void menu1(DS_SanPham ds)// menu gốc 
 {
