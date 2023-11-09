@@ -270,7 +270,7 @@ void xep_giaTienSP_tangDan(DS_SanPham& ds) //InterchangeSort
 
 	for (int i = 1; i <= n - 1; i++)
 	{
-		for (int j = i + 1; j < n; j++)
+		for (int j = i + 1; j <= n; j++)
 		{
 			if (ds.ds_SP[i].giaTienSP > ds.ds_SP[j].giaTienSP)
 				swap(ds.ds_SP[i], ds.ds_SP[j]);
