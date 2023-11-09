@@ -372,3 +372,8 @@ void xuatFile(const char* tenfile, const DS_SanPham& ds)
 	fclose(file);
 }
 
+
+void HamTest()
+{
+
+}
