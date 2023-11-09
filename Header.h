@@ -41,6 +41,7 @@
 //
 //bool check(Nodeptr& list, char* code);
 
+#define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include <iomanip>
 #include<string.h>
@@ -59,7 +60,7 @@ struct SanPham //túi sách
 
 struct DS_SanPham
 {
-	int soSanPham;
+	int soSanPham = 0;
 	SanPham ds_SP[MAX];
 };
 
@@ -68,13 +69,13 @@ void xuat_SanPham(SanPham sp);
 
 void nhap_DS_SP(DS_SanPham& ds);
 void xuat_DS_SP(DS_SanPham& ds);
-
 void Nhap_va_HienThiDS();
 
 void xoa_SanPham(DS_SanPham& ds);
-
 void them_SanPham_Cuoi(DS_SanPham& ds);
 void menu1(DS_SanPham ds);
-
 void xep_giaTienSP_tangDan(DS_SanPham& ds);
 void xep_giaTienSP_giamDan(DS_SanPham& ds);
+
+void docFile(const char* tenfile, DS_SanPham& ds);
+void xuatFile(const char* tenfile, const DS_SanPham& ds);
