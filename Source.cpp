@@ -181,6 +181,7 @@
 
 void nhap_SanPham(SanPham& sp) //thêm theo thứ tự từ trên xuống
 {
+	cout << endl;
 	cin.ignore();
 	cout << "Nhap ma san pham: ";
 	cin.getline(sp.maSP, 30); //kiểu char luôn dùng cin.getline
@@ -223,7 +224,7 @@ void nhap_DS_SP(DS_SanPham& ds)
 
 void xuat_DS_SP(DS_SanPham& ds)
 {
-	cout << "Co " << ds.soSanPham << " trong cua hang."<<endl;
+	cout << "Co " << ds.soSanPham << " san pham trong cua hang."<<endl;
 	cout << setw(0) <<"STT" << setw(17) << "Ten san pham" << setw(17) << "Ma san pham" << setw(20) << "Gioi tinh" 
 		<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
 
@@ -232,6 +233,40 @@ void xuat_DS_SP(DS_SanPham& ds)
 		cout << i << ". ";
 		xuat_SanPham(ds.ds_SP[i]);
 		cout << endl;
+	}
+} void menu1(DS_SanPham ds)
+{
+	nhap_DS_SP(ds);
+	xuat_DS_SP(ds);
+	cout << endl;
+	cout << "1. Them san pham.";
+	cout << "\n2. Xoa san pham.";
+	cout << "\n3. Xep gia tien tang dan.";
+	cout << "\n4. Xep gia tien giam dan.";
+	cout << "\n0. Thoat.";
+	int chon;
+	cout << "\nMoi ban nhap lua chon: ";
+	cin >> chon;
+	if (chon == 1)
+	{
+		system("cls");
+		xuat_DS_SP(ds);
+		cout << "\nNhap them san pham moi.";
+		them_SanPham_Cuoi(ds);
+	}
+	else if (chon == 2)
+	{
+		system("cls");
+		xuat_DS_SP(ds);
+		cout << "\nChon stt san pham can xoa: ";
+		cout << endl;
+		xoa_SanPham(ds);
+	}
+	else if (chon == 3)
+	{
+		system("cls");
+		xuat_DS_SP(ds);
+		xep_giaTienSP_tangDan(ds);
 	}
 }
 
@@ -248,9 +283,9 @@ void xuat_DS_SP(DS_SanPham& ds)
 //}
 
 void xoa_SanPham(DS_SanPham& ds)
-{
+{  
 	int pos;
-	cout << "Nhap vi tri san pham can xoa co tren danh sach: ";
+	cout << "\nNhap vi tri san pham can xoa co tren danh sach: ";
 	cin >> pos;
 
 	while (pos < 1 || pos > ds.soSanPham)
