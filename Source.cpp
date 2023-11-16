@@ -350,7 +350,6 @@ void xuatFile(const char* tenfile, const DS_SanPham& ds)
 	fclose(file);
 }
 
-
 void menu1(DS_SanPham ds)// menu gốc 
 {
 	nhap_DS_SP(ds);
@@ -386,3 +385,62 @@ void menu1(DS_SanPham ds)// menu gốc
 		xep_giaTienSP_tangDan(ds);
 	}
 }
+
+//_________________________________________
+
+/*
+* theo thứ tự
+* thêm sản phẩm vào đơn hàng
+* in hóa đơn. khi in sẽ nhập tên khách hàng, (mã đơn hàng sẽ tự tạo)
+* sau khi in hóa đơn sẽ hiển thị hóa đơn lên màn hình đồng thờ lưu tên khách hàng đó vào mục tên khách hàng trong đơn hàng
+* thêm đơn hàng vừa rồi vào danh sách đơn hàng
+*/
+
+void themSPvaoDH(DonHang& dh, SanPham& sp)
+{
+	dh.ds_sp[dh.soLuongSanPham] = sp;
+	dh.soLuongSanPham++;
+	cout << "Ten san pham: " << sp.tenSP << "da duoc them vao don hang.";
+}
+void themDHvaoDS(DS_DonHang& dsdh, DonHang& dh)
+{
+	dsdh.ds_dh[dsdh.soLuongDonHang] = dh;
+	dsdh.soLuongDonHang++;
+	cout << "Don hang " << dh.tenKH;
+}
+
+
+//hàm in sản phẩm trong đơn hàng ra màn hình đồng thời thêm tên khách hàng vào đơn hàng, thêm đơn hàng vào danh sách, chưa cần thêm tổng
+void inSP() //in hóa đơn
+{
+	DS_DonHang dsdh;
+	DonHang dh;
+	cout << "Nhap ten khach hang: ";
+	cin.ignore();
+	cin.getline(dh.tenKH, 30);
+	themDHvaoDS(dsdh, dh);
+}
+
+void xuatHD(DonHang dh)
+{
+	cout << "Thong tin hoa don: ";
+	cout << endl;
+
+	cout << setw(0) << "STT" << setw(17) << "Ten san pham" << setw(17) << "Ma san pham" << setw(20) << "Gioi tinh"
+		<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
+	for (int i = 1; i <= dh.soLuongSanPham; i++)
+	{
+		cout << setw(10) << dh.ds_sp[i].maSP << setw(20) << dh.ds_sp[i].tenSP << setw(20) << dh.ds_sp[i].gioiTinhSP << setw(20) << dh.ds_sp[i].baoHanhSP << setw(20)
+			<< dh.ds_sp[i].giaTienSP << endl;
+	}
+
+	cout << "Ten khach hang: " << dh.tenKH;
+}
+
+
+//hàm xuất hóa đơn
+//{
+//	nhập tên khách;
+//	hàm in sản phẩm trong đơn hàng;
+//	tổng giá trị đơn hàng;
+//}

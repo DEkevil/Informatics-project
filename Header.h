@@ -79,3 +79,23 @@ void xep_giaTienSP_giamDan(DS_SanPham& ds);
 
 void docFile(const char* tenfile, DS_SanPham& ds);
 void xuatFile(const char* tenfile, const DS_SanPham& ds);
+
+struct DonHang
+{
+	char tenKH[30];
+	int soLuongSanPham=1;
+	SanPham ds_sp[MAX];
+};
+
+struct DS_DonHang
+{
+	int soLuongDonHang = 1;
+	DonHang ds_dh[MAX];
+};
+
+void themSPvaoDH(DonHang& dh, SanPham& sp);
+void themDHvaoDS(DS_DonHang& dsdh, DonHang& dh);
+void inSP();
+void xuatHD(DonHang dh);
+
+

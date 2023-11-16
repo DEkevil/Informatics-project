@@ -101,7 +101,40 @@
 #include"Header.h"
 void main()
 {
-	SanPham sp;
+	DS_DonHang dsdh;
+	DonHang dh;
+
+	int soLuongSanPham;
+	cout << "Nhap so luong san pham can them vao don hang: ";
+	cin >> soLuongSanPham;
+
+	for (int i = 1; i <= soLuongSanPham;i++)
+	{
+		SanPham sp;
+		cout << "\nNhap thong tin san pham thu " << i << ":" << endl;
+		nhap_SanPham(sp);
+		themSPvaoDH(dh, sp);
+	}
+
+	themDHvaoDS(dsdh, dh);
+	xuatHD(dh);
+
+
+	system("pause");
+	
+
+
+
+
+
+
+
+
+
+
+	//_________________________________________________________________________________________
+
+	/*SanPham sp;
 	DS_SanPham ds;
 	int chose;
 	cout << "\n              CHUONG TRINH PHAN MEM BAN SAN PHAM QUAN AO";
@@ -181,5 +214,7 @@ void main()
 	else if (chose == 99)
 	{
 		exit(0);
-	}
+	}*/
+
+
 }
