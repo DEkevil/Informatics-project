@@ -1,10 +1,4 @@
 # Informatics-project
-Đồ án tin học
-1 - Rework lại Menu
-    - Menu trong Menu 
-  Vd :
-  Menu mới vào : Xin chào , tác giả , chương trình bán quần áo , 
-  bấm 1 ->  Nhập mới sản phẩm ( nhập xuất ) , bấm 2 -> load dữ liệu từ file ( nhập file , xuất file ) 
 2 - Phần sản phẩm 
   - còn thiếu tìm kiếm theo mã sản phẩm( tên sản phẩm hay sao cũng đc )
 3 - Phần Đơn Hàng
