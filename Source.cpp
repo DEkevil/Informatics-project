@@ -113,6 +113,46 @@ void xep_giaTienSP_giamDan(DS_SanPham& ds) //InterchangeSort
 	}
 }
 
+void timSP_theoMaSP(DS_SanPham ds)
+{
+	SanPham sp;
+	char maCanTim[30];
+	bool timThay = false;
+
+	cout << "Nhap ma san pham can tim: ";
+	cin.ignore();
+	cin.getline(maCanTim, 30);
+
+	for (int i = 1; i <= ds.soSanPham; i++)
+	{
+		int ketQua=strcmp(maCanTim,ds.ds_SP[i].maSP);
+
+		if (ketQua == 0)
+		{
+			timThay = true;
+			system("cls");
+
+			cout << "\nCo san pham ma ban can tim: ";
+			cout << endl;
+
+			cout << setw(0) << "STT" << setw(17) << "Ten san pham" << setw(17) 
+				<< "Ma san pham" << setw(20) << "Gioi tinh"
+				<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
+
+			/*cout << setw(10) << ds.ds_SP[i].maSP << setw(20) << ds.ds_SP[i].tenSP << setw(20) 
+				<< ds.ds_SP[i].gioiTinhSP << setw(20) << ds.ds_SP[i].baoHanhSP << setw(20)
+				<< ds.ds_SP[i].giaTienSP << endl;*/
+			cout << i << ". ";
+			xuat_SanPham(ds.ds_SP[i]);
+			break;
+		}
+	}
+	if (timThay == false)
+	{
+		cout << "\nKhong co san pham ma ban can tim.\n";
+	}
+}
+
 void docFile(const char* tenfile, DS_SanPham& ds) 
 {
 	FILE* file;
@@ -165,7 +205,7 @@ void xuatFile(const char* tenfile, const DS_SanPham& ds)
 
 	/*fprintf(file, "Ten san pham      Ma san pham           Gioi tinh            Bao hanh            Gia tien" << endl;);*/
 	fprintf(file, "MaSP\tTenSP\tGTSP\tBH\t\tGiaTien\n");
-	for (int i = 0; i < ds.soSanPham; ++i)
+	for (int i = 1; i <= ds.soSanPham; ++i)
 	{
 		fprintf(file, "%s \t%s \t%s \t\t%d \t\t%.2f\n", ds.ds_SP[i].maSP, ds.ds_SP[i].tenSP, ds.ds_SP[i].gioiTinhSP, ds.ds_SP[i].baoHanhSP, ds.ds_SP[i].giaTienSP);
 	}
