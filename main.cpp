@@ -211,8 +211,72 @@ void main()
 			}
 			case 3:
 			{
+				system("cls");
 
+				bool thoatMenu3 = true;
+				do
+				{
+					#pragma region Menu3
+					cout << "\n0. Tao don hang."; //đơn hàng sẽ được tự động thêm vào danh sách đơn hàng sau khi tạo đồng thời hiển thị đơn hàng ra màn hình + in vào file txt
+					cout << "\n1. Hiển thị danh sách đơn hàng."; //chỉ hiển thị
+					cout << "\n2. Điều chỉnh đơn hàng."; //danh sách đơn hàng sẽ được hiện ra, phía dưới sẽ có menu(switch) để điều chỉnh (thêm sp, xóa sp, sửa tên,...)
+					cout << "\n3. Xóa đơn hàng."; //danh sách đơn hàng sẽ được hiện ra, xóa tương tự như với sản phẩm
+					cout << "\n4. In danh sách đơn hàng ra file txt.";
+					cout << "\n5. Tìm đơn hàng theo mã.";
+					cout << "\n\n98. Quay về menu truoc.";
+					cout << "\n99. Thoat chuong trinh.";
+					#pragma endregion
 
+					int chose_Menu3;
+					cout << "\nMoi ban nhap lua chon: ";
+					cin >> chose_Menu3;
+
+					bool thoatSwitchMenu3 = true;
+					do
+					{
+						switch (chose_Menu3)
+						{
+						case 0:
+						{
+							//hiển thị danh sách sản phẩm
+							cout << "Them san pham vao gio hang."; //thêm số lượng
+							cout << "Xoa san pham.";
+							cout << "Tien hanh mua hang."; //HIển thị danh sách sản phẩm trong đơn hàng-->nhập tên-->[Hiện ra ds + giá tiền + thông tin cá nhân]---->Đặt hàng-->thông báo dặt hàng thành công--->in đơn hàng ra file text đồng thời lưu đơn hàng vào danh sách
+							cout << "Thoat / Huy mua hang.";
+						}
+						case 1:
+						{
+
+						}
+						case 2:
+						{
+
+						}
+						case 3:
+						{
+
+						}
+						case 4:
+						{
+
+						}
+						case 5:
+						{
+
+						}
+						case 98:
+						{
+
+						}
+						case 99:
+						{
+
+						}
+						default:
+							break;
+						}
+					} while (thoatSwitchMenu3);
+				} while (thoatMenu3);
 
 
 				system("cls");
@@ -249,4 +313,5 @@ void main()
 	system("cls");
 	cout << "\n\nTest thoat chuong trinh thanh cong\n";
 	system("pause");
+
 }

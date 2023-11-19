@@ -125,7 +125,7 @@ void timSP_theoMaSP(DS_SanPham ds)
 
 	for (int i = 1; i <= ds.soSanPham; i++)
 	{
-		int ketQua=strcmp(maCanTim,ds.ds_SP[i].maSP);
+		int ketQua=strcmp(maCanTim,ds.ds_SP[i].maSP); // Nếu giống nhau sẽ trả về kết quả bằng 0
 
 		if (ketQua == 0)
 		{
