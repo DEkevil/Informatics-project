@@ -232,7 +232,7 @@ void xuatFile(const char* tenfile, const DS_SanPham& ds)
 	}
 
 	/*fprintf(file, "Ten san pham      Ma san pham           Gioi tinh            Bao hanh            Gia tien" << endl;);*/
-	fprintf(file, "MaSP\tTenSP\tGTSP\tBH\t\tGiaTien\n");
+	/*fprintf(file, "MaSP\tTenSP\tGTSP\tBH\t\tGiaTien\n");*/
 	for (int i = 1; i <= ds.soSanPham; ++i)
 	{
 		fprintf(file, "%s \t%s \t%s \t\t%d \t\t%.2f\n", ds.ds_SP[i].maSP, ds.ds_SP[i].tenSP, ds.ds_SP[i].gioiTinhSP, ds.ds_SP[i].baoHanhSP, ds.ds_SP[i].giaTienSP);

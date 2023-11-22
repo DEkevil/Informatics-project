@@ -9,3 +9,4 @@ D008 	test8 	nam 		12 		8000.00
 D009 	test9 	nu 		24 		9000.00
 D010 	test10 	nu 		24 		10000.00
 D111 	Huy 	Nam 		21 		10000.00
+D2 	Giang 	Nam 		22 		2222.00
