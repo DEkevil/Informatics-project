@@ -35,35 +35,40 @@ void xuat_DS_SP(DS_SanPham& ds);
 
 void xoa_SanPham(DS_SanPham& ds);
 void them_SanPham_Cuoi(DS_SanPham& ds);
-void menu1(DS_SanPham ds);
+
+void menuLamMoi(DS_SanPham ds);
+void mainmenu();
+void menuSauKhiThaoTac(DS_SanPham ds);
+void menuNhapXuatFile(DS_SanPham ds);
 
 void xep_giaTienSP_tangDan(DS_SanPham& ds);
 void xep_giaTienSP_giamDan(DS_SanPham& ds);
 
 void timSP_theoMaSP(DS_SanPham ds);
+void timSP_theoTenSP(DS_SanPham ds);
 
 void docFile(const char* tenfile, DS_SanPham& ds);
 void xuatFile(const char* tenfile, const DS_SanPham& ds);
 
 //_______________________________________________________________
 
-struct DonHang
-{
-	char tenKH[30];
-	int soLuongSanPham = 0;
-	SanPham ds_sp[MAX];
-};
-struct DS_DonHang
-{
-	int soLuongDonHang = 0;
-	DonHang ds_dh[MAX];
-};
+//struct DonHang
+//{
+//	char tenKH[30];
+//	int soLuongSanPham = 0;
+//	SanPham ds_sp[MAX];
+//};
+//struct DS_DonHang
+//{
+//	int soLuongDonHang = 0;
+//	DonHang ds_dh[MAX];
+//};
 
-void themSPvaoDH(DonHang& dh, SanPham& sp);
-void themDHvaoDS(DS_DonHang& dsdh, DonHang& dh);
-void inSP(DS_DonHang& dsdh, DonHang& dh);
-void xuatHD(DonHang dh);
-
-void TestThemSPvaoDH(DS_DonHang& dsdh, DonHang& dh);
-void TestXuatDSDH(DS_DonHang dsdh, DonHang dh);
+//void themSPvaoDH(DonHang& dh, SanPham& sp);
+//void themDHvaoDS(DS_DonHang& dsdh, DonHang& dh);
+//void inSP(DS_DonHang& dsdh, DonHang& dh);
+//void xuatHD(DonHang dh);
+//
+//void TestThemSPvaoDH(DS_DonHang& dsdh, DonHang& dh);
+//void TestXuatDSDH(DS_DonHang dsdh, DonHang dh);
 
