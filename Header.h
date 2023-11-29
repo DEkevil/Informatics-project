@@ -47,7 +47,7 @@ void xuatFile(const char* tenfile, const DS_SanPham& ds);
 
 struct DonHang
 {
-	char maDH[10];
+	int maDH;
 	char tenKH[30];
 	int soLuongSanPham = 0;
 	SanPham ds_sp[MAX];
@@ -75,3 +75,5 @@ void menuDonHang(DS_DonHang& dsdh, DonHang& dh, DS_SanPham& dssp);
 
 void xuat_DonHang(DonHang dh);
 void xuat_DS_DH(DS_DonHang& ds);
+
+void muaHang(DS_DonHang& dsdh, DS_SanPham& dssp);
