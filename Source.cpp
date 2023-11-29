@@ -239,10 +239,13 @@ void xuatFile(const char* tenfile, const DS_SanPham& ds)
 	}
 	fclose(file);
 }
-void mainmenu()// menu chính 
+
+void mainmenu(DS_SanPham& ds)// menu chính 
 { 
 	int n;
-	DS_SanPham ds;
+	
+
+
 	system("cls");
 	cout << "\n                  CHUONG TRINH PHAN MEM BAN SAN PHAM QUAN AO ";
 	cout << "\n                                 From STU-IT";
@@ -251,6 +254,7 @@ void mainmenu()// menu chính
 	cout << "\n 1. Lam moi chuong trinh cua ban (Thay doi them, sua, xoa, sap xep,...)";
 	cout << "\n 2. Nhap file san pham da co";
 	cout << "\n 3. Thao tac tao don hang(update later)";
+	cout << "\n 5. test xuat dssp.";
 	cout << "\n 99. de thoat.";
 	cout << "\n================================================================================";
 	cout << "\n Moi ban chon : ";
@@ -263,13 +267,22 @@ void mainmenu()// menu chính
 	{
 		menuNhapXuatFile(ds);
 	}
+	if (n == 3)
+	{
+		xuat_SanPham(ds.ds_SP[3]);
+		cout << endl;
+	}
+	if (n == 5)
+	{
+		xuat_DS_SP(ds);
+	}
 	else if (n == 99)
 	{
 		exit(0);
 	}
 
 }
-void menuNhapXuatFile(DS_SanPham ds)// menu sau khi đọc file txt
+void menuNhapXuatFile(DS_SanPham& ds)// menu sau khi đọc file txt
 {      
 	system("cls"); 
 	docFile("DanhSach.txt", ds);
@@ -345,11 +358,11 @@ void menuNhapXuatFile(DS_SanPham ds)// menu sau khi đọc file txt
 	}
 	else if (chon == 0)
 	{
-		mainmenu();
+		mainmenu(ds);
 	}
 
 }
-void menuSauKhiThaoTac(DS_SanPham ds) // menu khi sau thực hiện đọc file hay nhập liệu
+void menuSauKhiThaoTac(DS_SanPham& ds) // menu khi sau thực hiện đọc file hay nhập liệu
 {
 	xuat_DS_SP(ds);
 	cout << endl;
@@ -417,10 +430,10 @@ void menuSauKhiThaoTac(DS_SanPham ds) // menu khi sau thực hiện đọc file 
 	}
 	else if (chon == 0)
 	{
-		mainmenu();
+		mainmenu(ds);
 	}
 }
-void menuLamMoi(DS_SanPham ds)// menu gốc 
+void menuLamMoi(DS_SanPham& ds)// menu gốc 
 {
 	system("cls");
 	nhap_DS_SP(ds);
@@ -492,7 +505,7 @@ void menuLamMoi(DS_SanPham ds)// menu gốc
 	}
 	else if (chon == 0)
 	{
-		mainmenu();
+		mainmenu(ds );
 	}
 }
 
@@ -506,44 +519,55 @@ void menuLamMoi(DS_SanPham ds)// menu gốc
 * thêm đơn hàng vừa rồi vào danh sách đơn hàng
 */
 
-//void themSPvaoDH(DonHang& dh, SanPham& sp)
-//{
-//	dh.soLuongSanPham++;
-//	dh.ds_sp[dh.soLuongSanPham] = sp;
-//	/*dh.soLuongSanPham++;*/
-//	
-//}
-//void themDHvaoDS(DS_DonHang& dsdh, DonHang& dh)
-//{
-//	dsdh.soLuongDonHang++;
-//	dsdh.ds_dh[dsdh.soLuongDonHang] = dh;
-//	cout << "Don hang " << dh.tenKH;
-//}
+void themSPvaoDH(DonHang& dh, DS_SanPham& dssp, int sp)
+{
+	;
+	int n;
+	dh.soLuongSanPham++;
+	n = dh.soLuongSanPham;
+	dh.ds_sp[n] = dssp.ds_SP[sp];
+
+	//dang test nen de trong ham(sau dung vong lap se dua ra ngoai sau)
+	cin.ignore();
+	cout << "\nNhap ten khach hang: ";
+	cin.getline(dh.tenKH, 30);
+	
+
+	cout << "\nNhap ma don hang: ";
+	cin.getline(dh.maDH, 10);
+	
+}
+void themDHvaoDS(DS_DonHang& dsdh, DonHang& dh)
+{
+	dsdh.soLuongDonHang++;
+	dsdh.ds_dh[dsdh.soLuongDonHang] = dh;
+
+}
 
 
 //hàm in sản phẩm trong đơn hàng ra màn hình đồng thời thêm tên khách hàng vào đơn hàng, thêm đơn hàng vào danh sách, chưa cần thêm tổng
-//void inSP(DS_DonHang& dsdh, DonHang& dh) //in hóa đơn
-//{
-//
-//	//cout << "Nhap ten khach hang: ";
-//	//cin.getline(dh.tenKH, 30);
-//
-//	themDHvaoDS(dsdh, dh);
-//}
-//void xuatHD(DonHang dh)
-//{
-//	cout << "Thong tin hoa don: ";
-//	cout << endl;
-//
-//	cout << setw(0) << "STT" << setw(17) << "Ten san pham" << setw(17) << "Ma san pham" << setw(20) << "Gioi tinh"
-//		<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
-//	for (int i = 1; i <= dh.soLuongSanPham; i++)
-//	{
-//		cout << setw(10) << dh.ds_sp[i].maSP << setw(20) << dh.ds_sp[i].tenSP << setw(20) << dh.ds_sp[i].gioiTinhSP << setw(20) << dh.ds_sp[i].baoHanhSP << setw(20)
-//			<< dh.ds_sp[i].giaTienSP << endl;
-//	}
-//    cout << "Ten khach hang: " << dh.tenKH;
-//}
+void inSP(DS_DonHang& dsdh, DonHang& dh) //in hóa đơn
+{
+
+	//cout << "Nhap ten khach hang: ";
+	//cin.getline(dh.tenKH, 30);
+
+	themDHvaoDS(dsdh, dh);
+}
+void xuatHD(DonHang dh)
+{
+	cout << "Thong tin hoa don: ";
+	cout << endl;
+
+	cout << setw(0) << "STT" << setw(17) << "Ten san pham" << setw(17) << "Ma san pham" << setw(20) << "Gioi tinh"
+		<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
+	for (int i = 1; i <= dh.soLuongSanPham; i++)
+	{
+		cout << setw(10) << dh.ds_sp[i].maSP << setw(20) << dh.ds_sp[i].tenSP << setw(20) << dh.ds_sp[i].gioiTinhSP << setw(20) << dh.ds_sp[i].baoHanhSP << setw(20)
+			<< dh.ds_sp[i].giaTienSP << endl;
+	}
+    cout << "Ten khach hang: " << dh.tenKH;
+}
 
 //hàm xuất hóa đơn
 //{
@@ -591,4 +615,68 @@ void menuLamMoi(DS_SanPham ds)// menu gốc
 //}
 
 
+void menuDonHang(DS_DonHang& dsdh, DonHang& dh, DS_SanPham& dssp)
+{
+	cout << "\n1. Them san pham vao don hang.";
+	cout << "\n2. In don hang ra man hinh.";
+	cout << "\n3. In danh sach cac don hang.";
+	cout << "\n4. Thoat";
 
+	int chon;
+	cout << "\nMoi ban nhap lua chon: ";
+	cin >> chon;
+	if (chon == 1)
+	{
+		system("cls");
+		xuat_DS_SP(dssp);
+		
+		int sp_mua;
+		cout << "\nNhap san phan can mua: ";
+		cin >> sp_mua;
+		cout << "San pham " << sp_mua << " vua duoc them vao don hang.";
+		themSPvaoDH(dh,dssp, sp_mua);
+		themDHvaoDS(dsdh, dh);
+
+		menuDonHang(dsdh, dh, dssp);
+	}
+	if (chon == 2)
+	{
+		system("cls");
+		xuat_DonHang(dh);
+
+		menuDonHang(dsdh, dh, dssp);
+
+	}
+	if (chon == 3)
+	{
+		system("cls");
+		xuat_DS_DH(dsdh);
+
+		menuDonHang(dsdh, dh, dssp);
+	}
+	if (chon == 4)
+	{
+
+	}
+}
+
+
+void xuat_DonHang(DonHang dh)
+{
+	cout << setw(10) << dh.maDH << setw(20) << dh.tenKH << setw(20) << dh.soLuongSanPham << endl;
+}
+void xuat_DS_DH(DS_DonHang& ds)
+{
+	cout << "\n====================================================================================================";
+	cout << endl;
+	cout << "Co " << ds.soLuongDonHang << " trong danh sach don hang." << endl;
+	cout << setw(0) << "STT" << setw(17) << "Ma don hang" << setw(17) << "Ten khach hang" << setw(20) << "So luong san pham" << endl;
+	for (int i = 1; i <= ds.soLuongDonHang; i++)
+	{
+		cout << i << ". ";
+		xuatHD(ds.ds_dh[i]);
+		cout << endl;
+	}
+	cout << "\n====================================================================================================";
+	cout << endl;
+}
