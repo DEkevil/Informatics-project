@@ -246,7 +246,7 @@ void mainmenu()// menu chính
 	system("cls");
 	cout << "\n                  CHUONG TRINH PHAN MEM BAN SAN PHAM QUAN AO ";
 	cout << "\n                                 From STU-IT";
-	cout << "\n                   Author : Thuan Luong and Thong Lon";
+	cout << "\n                   Author : Luong Hieu Thuan and Le Nguyen Minh Thong";
 	cout << "\n==================================MENU==========================================";
 	cout << "\n 1. Lam moi chuong trinh cua ban (Thay doi them, sua, xoa, sap xep,...)";
 	cout << "\n 2. Nhap file san pham da co";
@@ -298,6 +298,7 @@ void menuNhapXuatFile(DS_SanPham ds)// menu sau khi đọc file txt
 		cout << "\nNhap them san pham moi.";
 		them_SanPham_Cuoi(ds);
 		xuat_DS_SP(ds);
+		menuSauKhiThaoTac(ds);
 	}
 	else if (chon == 2)
 	{
@@ -307,13 +308,14 @@ void menuNhapXuatFile(DS_SanPham ds)// menu sau khi đọc file txt
 		cout << endl;
 		xoa_SanPham(ds);
 		xuat_DS_SP(ds);
+		menuSauKhiThaoTac(ds);
 	}
 	else if (chon == 3)
 	{
 		system("cls");
-		xuat_DS_SP(ds);
 		xep_giaTienSP_tangDan(ds);
 		xuat_DS_SP(ds);
+		menuSauKhiThaoTac(ds);
 	}
 	else if (chon == 4)
 	{
