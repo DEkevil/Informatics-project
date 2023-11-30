@@ -555,7 +555,7 @@ void xuat_DS_DH(DS_DonHang& ds)
 	for (int i = 1; i <= ds.soLuongDonHang; i++)
 	{
 		cout << i << ". ";
-		cout << setw(0) << ds.ds_dh[i].maDH << setw(17) << ds.ds_dh[i].tenKH << setw(20) << ds.ds_dh[i].soLuongSanPham;
+		cout << setw(17) << ds.ds_dh[i].maDH << setw(17) << ds.ds_dh[i].tenKH << setw(20) << ds.ds_dh[i].soLuongSanPham;
 		cout << endl;
 	}
 	cout << "\n====================================================================================================";
@@ -583,7 +583,7 @@ void muaHang(DS_DonHang& dsdh, DS_SanPham& dssp)
 	cout << "\nNhap ten khach hang: ";
 	cin.getline(dh.tenKH, 30);
 
-	dh.maDH = 1000 + rand() % 9000;
+	dh.maDH = 1000 + rand() % 9000; //chọn 1 số có 4 chữ số ngẫu nhiên để làm mã đơn hàng
 
 
 
@@ -608,7 +608,7 @@ void menuDonHang(DS_DonHang& dsdh, DonHang& dh, DS_SanPham& dssp)
 		xuat_DS_SP(dssp);
 
 		muaHang(dsdh, dssp);
-
+		system("cls");
 		menuDonHang(dsdh, dh, dssp);
 	}
 	if (chon == 2)
