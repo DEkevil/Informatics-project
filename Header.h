@@ -19,14 +19,7 @@ struct DS_SanPham
 	int soSanPham = 0;
 	SanPham ds_SP[MAX];
 };
-struct DonHang 
-{
 
-};
-struct DS_DonHang
-{
-
-};
 void nhap_SanPham(SanPham& sp);
 void xuat_SanPham(SanPham sp);
 
@@ -35,11 +28,6 @@ void xuat_DS_SP(DS_SanPham& ds);
 
 void xoa_SanPham(DS_SanPham& ds);
 void them_SanPham_Cuoi(DS_SanPham& ds);
-
-void menuLamMoi(DS_SanPham ds);
-void mainmenu();
-void menuSauKhiThaoTac(DS_SanPham ds);
-void menuNhapXuatFile(DS_SanPham ds);
 
 void xep_giaTienSP_tangDan(DS_SanPham& ds);
 void xep_giaTienSP_giamDan(DS_SanPham& ds);
@@ -50,25 +38,42 @@ void timSP_theoTenSP(DS_SanPham ds);
 void docFile(const char* tenfile, DS_SanPham& ds);
 void xuatFile(const char* tenfile, const DS_SanPham& ds);
 
+void menuLamMoi(DS_SanPham& ds);
+void mainmenu(DS_SanPham& ds);
+void menuSauKhiThaoTac(DS_SanPham& ds);
+void menuNhapXuatFile(DS_SanPham& ds);
+
 //_______________________________________________________________
 
-//struct DonHang
-//{
-//	char tenKH[30];
-//	int soLuongSanPham = 0;
-//	SanPham ds_sp[MAX];
-//};
-//struct DS_DonHang
-//{
-//	int soLuongDonHang = 0;
-//	DonHang ds_dh[MAX];
-//};
+struct DonHang
+{
+	int maDH;
+	char tenKH[30];
+	int soLuongSanPham = 0;
+	SanPham ds_sp[MAX];
+};
+struct DS_DonHang
+{
 
-//void themSPvaoDH(DonHang& dh, SanPham& sp);
-//void themDHvaoDS(DS_DonHang& dsdh, DonHang& dh);
-//void inSP(DS_DonHang& dsdh, DonHang& dh);
-//void xuatHD(DonHang dh);
-//
-//void TestThemSPvaoDH(DS_DonHang& dsdh, DonHang& dh);
-//void TestXuatDSDH(DS_DonHang dsdh, DonHang dh);
+	int soLuongDonHang = 0;
+	DonHang ds_dh[MAX];
+};
 
+void themSPvaoDH(DonHang& dh, DS_SanPham& dssp, int sp);
+void themDHvaoDS(DS_DonHang& dsdh, DonHang& dh);
+void inSP(DS_DonHang& dsdh, DonHang& dh);
+void xuatHD(DonHang dh);
+
+void TestThemSPvaoDH(DS_DonHang& dsdh, DonHang& dh);
+void TestXuatDSDH(DS_DonHang dsdh, DonHang dh);
+
+//_____________________
+
+void menuDonHang(DS_DonHang& dsdh, DonHang& dh, DS_SanPham& dssp);
+
+//_____________________
+
+void xuat_DonHang(DonHang dh);
+void xuat_DS_DH(DS_DonHang& ds);
+
+void muaHang(DS_DonHang& dsdh, DS_SanPham& dssp);
