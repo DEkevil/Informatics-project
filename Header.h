@@ -29,11 +29,6 @@ void xuat_DS_SP(DS_SanPham& ds);
 void xoa_SanPham(DS_SanPham& ds);
 void them_SanPham_Cuoi(DS_SanPham& ds);
 
-void menuLamMoi(DS_SanPham& ds);
-void mainmenu(DS_SanPham& ds);
-void menuSauKhiThaoTac(DS_SanPham& ds);
-void menuNhapXuatFile(DS_SanPham& ds);
-
 void xep_giaTienSP_tangDan(DS_SanPham& ds);
 void xep_giaTienSP_giamDan(DS_SanPham& ds);
 
@@ -42,6 +37,11 @@ void timSP_theoTenSP(DS_SanPham ds);
 
 void docFile(const char* tenfile, DS_SanPham& ds);
 void xuatFile(const char* tenfile, const DS_SanPham& ds);
+
+void menuLamMoi(DS_SanPham& ds);
+void mainmenu(DS_SanPham& ds);
+void menuSauKhiThaoTac(DS_SanPham& ds);
+void menuNhapXuatFile(DS_SanPham& ds);
 
 //_______________________________________________________________
 

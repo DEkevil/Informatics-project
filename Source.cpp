@@ -240,11 +240,12 @@ void xuatFile(const char* tenfile, const DS_SanPham& ds)
 	fclose(file);
 }
 
+DonHang dh;
+DS_DonHang dsdh;
 void mainmenu(DS_SanPham& ds)// menu chính 
 {
+
 	int n;
-
-
 
 	system("cls");
 	cout << "\n                  CHUONG TRINH PHAN MEM BAN SAN PHAM QUAN AO ";
@@ -269,8 +270,9 @@ void mainmenu(DS_SanPham& ds)// menu chính
 	}
 	if (n == 3)
 	{
-		xuat_SanPham(ds.ds_SP[3]);
-		cout << endl;
+		system("cls");
+
+		menuDonHang(dsdh, dh, ds);
 	}
 	if (n == 5)
 	{
@@ -525,29 +527,6 @@ void themDHvaoDS(DS_DonHang& dsdh, DonHang& dh)
 
 }
 
-//void inSP(DS_DonHang& dsdh, DonHang& dh) //in hóa đơn
-//{
-//
-//	//cout << "Nhap ten khach hang: ";
-//	//cin.getline(dh.tenKH, 30);
-//
-//	themDHvaoDS(dsdh, dh);
-//}
-//void xuatHD(DonHang dh)
-//{
-//	cout << "Thong tin hoa don: ";
-//	cout << endl;
-//
-//	cout << setw(0) << "STT" << setw(17) << "Ten san pham" << setw(17) << "Ma san pham" << setw(20) << "Gioi tinh"
-//		<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
-//	for (int i = 1; i <= dh.soLuongSanPham; i++)
-//	{
-//		cout << setw(10) << dh.ds_sp[i].maSP << setw(20) << dh.ds_sp[i].tenSP << setw(20) << dh.ds_sp[i].gioiTinhSP << setw(20) << dh.ds_sp[i].baoHanhSP << setw(20)
-//			<< dh.ds_sp[i].giaTienSP << endl;
-//	}
-//	cout << "Ten khach hang: " << dh.tenKH;
-//}
-
 void xuat_DonHang(DonHang dh)
 {
 	cout << "\n====================================================================================================";
@@ -583,7 +562,6 @@ void xuat_DS_DH(DS_DonHang& ds)
 	cout << endl;
 }
 
-
 void muaHang(DS_DonHang& dsdh, DS_SanPham& dssp)
 {
 	DonHang dh;
@@ -614,6 +592,8 @@ void muaHang(DS_DonHang& dsdh, DS_SanPham& dssp)
 
 void menuDonHang(DS_DonHang& dsdh, DonHang& dh, DS_SanPham& dssp)
 {
+
+
 	cout << "\n1. Them san pham vao don hang.";
 	cout << "\n2. In don hang ra man hinh.";
 	cout << "\n3. In danh sach cac don hang.";
@@ -627,15 +607,7 @@ void menuDonHang(DS_DonHang& dsdh, DonHang& dh, DS_SanPham& dssp)
 		system("cls");
 		xuat_DS_SP(dssp);
 
-		/*int sp_mua;
-		cout << "\nNhap san phan can mua: ";
-		cin >> sp_mua;
-		cout << "San pham " << sp_mua << " vua duoc them vao don hang.";
-		themSPvaoDH(dh,dssp, sp_mua);
-		themDHvaoDS(dsdh, dh);*/
-
 		muaHang(dsdh, dssp);
-
 
 		menuDonHang(dsdh, dh, dssp);
 	}
@@ -655,8 +627,6 @@ void menuDonHang(DS_DonHang& dsdh, DonHang& dh, DS_SanPham& dssp)
 			}	
 		}
 
-		/*xuat_DonHang(dh);*/
-
 		menuDonHang(dsdh, dh, dssp);
 
 	}
@@ -672,17 +642,3 @@ void menuDonHang(DS_DonHang& dsdh, DonHang& dh, DS_SanPham& dssp)
 
 	}
 }
-
-
-
-
-
-
-//dang test nen de trong ham(sau dung vong lap se dua ra ngoai sau)
-//cin.ignore();
-//cout << "\nNhap ten khach hang: ";
-//cin.getline(dh.tenKH, 30);
-//
-
-//cout << "\nNhap ma don hang: ";
-//cin.getline(dh.maDH, 10);
