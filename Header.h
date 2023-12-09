@@ -20,6 +20,7 @@ struct DS_SanPham
 	SanPham ds_SP[MAX];
 };
 
+
 void nhap_SanPham(SanPham& sp);
 void xuat_SanPham(SanPham sp);
 
@@ -77,3 +78,4 @@ void xuat_DonHang(DonHang dh);
 void xuat_DS_DH(DS_DonHang& ds);
 
 void muaHang(DS_DonHang& dsdh, DS_SanPham& dssp);
+void xoa_DonHang(DS_DonHang& dsdh);

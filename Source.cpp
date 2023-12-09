@@ -1,4 +1,7 @@
 ﻿#include"Header.h"
+#include <time.h>
+time_t hientai = time(0);
+tm* t = localtime(&hientai);
 void nhap_SanPham(SanPham& sp) //thêm theo thứ tự từ trên xuống
 {
 	cin.ignore();
@@ -24,92 +27,93 @@ void xuat_SanPham(SanPham sp)
 		<< sp.giaTienSP << endl;
 }
 
-void nhap_DS_SP(DS_SanPham& ds)
+void nhap_DS_SP(DS_SanPham& dssp)
 {
 	cout << "Nhap so luong san pham can hien thi: ";
-	cin >> ds.soSanPham;
+	cin >> dssp.soSanPham;
 
 	cout << "Nhap danh sach san pham: ";
 	cout << endl;
 
-	for (int i = 1; i <= ds.soSanPham; i++)
+	for (int i = 1; i <= dssp.soSanPham; i++)
 	{
 		cout << "San pham thu " << i << endl;
-		nhap_SanPham(ds.ds_SP[i]);
+		nhap_SanPham(dssp.ds_SP[i]);
 		cout << endl;
 
 	}
 }
-void xuat_DS_SP(DS_SanPham& ds)
+void xuat_DS_SP(DS_SanPham& dssp)
 {
 	cout << "\n====================================================================================================";
 	cout << endl;
-	cout << "Co " << ds.soSanPham << " trong cua hang." << endl;
+	cout << "Co " << dssp.soSanPham << " trong cua hang." << endl;
 	cout << setw(0) << "STT" << setw(17) << "Ten san pham" << setw(17) << "Ma san pham" << setw(20) << "Gioi tinh"
 		<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
-	for (int i = 1; i <= ds.soSanPham; i++)
+	for (int i = 1; i <= dssp.soSanPham; i++)
 	{
 		cout << i << ". ";
-		xuat_SanPham(ds.ds_SP[i]);
+		xuat_SanPham(dssp.ds_SP[i]);
 		cout << endl;
 	}
 	cout << "\n====================================================================================================";
 	cout << endl;
 }
 
-void xoa_SanPham(DS_SanPham& ds)
+void xoa_SanPham(DS_SanPham& dssp)
 {
 	int pos;
 	cout << "\nNhap vi tri san pham can xoa co tren danh sach: ";
 	cin >> pos;
 
-	while (pos < 1 || pos > ds.soSanPham)
+	while (pos < 1 || pos > dssp.soSanPham)
 	{
 		cout << "So nhap nam ngoai danh sach, xin moi nhap lai:	";
 		cin >> pos;
 	}
 
-	for (int i = pos; i <= ds.soSanPham; i++)
+	for (int i = pos; i <= dssp.soSanPham; i++)
 	{
-		ds.ds_SP[i] = ds.ds_SP[i + 1];
+		dssp.ds_SP[i] = dssp.ds_SP[i + 1];
 	}
-	ds.soSanPham--;
+	dssp.soSanPham--;
 }
-void them_SanPham_Cuoi(DS_SanPham& ds)
+
+void them_SanPham_Cuoi(DS_SanPham& dssp)
 {
 	SanPham sp;
-	ds.soSanPham++;
-	nhap_SanPham(ds.ds_SP[ds.soSanPham]);
+	dssp.soSanPham++;
+	nhap_SanPham(dssp.ds_SP[dssp.soSanPham]);
 }
-void xep_giaTienSP_tangDan(DS_SanPham& ds) //InterchangeSort
+void xep_giaTienSP_tangDan(DS_SanPham& dssp) //InterchangeSort
 {
 	SanPham sp;
 
-	int n = ds.soSanPham;
+	int n = dssp.soSanPham;
 
 	for (int i = 1; i <= n - 1; i++)
 	{
 		for (int j = i + 1; j <= n; j++)
 		{
-			if (ds.ds_SP[i].giaTienSP > ds.ds_SP[j].giaTienSP)
-				swap(ds.ds_SP[i], ds.ds_SP[j]);
+			if (dssp.ds_SP[i].giaTienSP > dssp.ds_SP[j].giaTienSP)
+				swap(dssp.ds_SP[i], dssp.ds_SP[j]);
 		}
 	}
 }
-void xep_giaTienSP_giamDan(DS_SanPham& ds) //InterchangeSort
+void xep_giaTienSP_giamDan(DS_SanPham& dssp) //InterchangeSort
 {
 	SanPham sp;
-	int n = ds.soSanPham;
+	int n = dssp.soSanPham;
 	for (int i = 1; i <= n; i++)
 	{
 		for (int j = i + 1; j <= n; j++)
 		{
-			if (ds.ds_SP[i].giaTienSP < ds.ds_SP[j].giaTienSP)
-				swap(ds.ds_SP[i], ds.ds_SP[j]);
+			if (dssp.ds_SP[i].giaTienSP < dssp.ds_SP[j].giaTienSP)
+				swap(dssp.ds_SP[i], dssp.ds_SP[j]);
 		}
 	}
 }
-void timSP_theoTenSP(DS_SanPham ds)
+void timSP_theoTenSP(DS_SanPham dssp)
 {
 	SanPham sp;
 	char ma[50];
@@ -118,9 +122,9 @@ void timSP_theoTenSP(DS_SanPham ds)
 	cout << endl;
 	cin.ignore();
 	cin.getline(ma, 50);
-	for (int i = 0; i <= ds.soSanPham; i++)
+	for (int i = 0; i <= dssp.soSanPham; i++)
 	{
-		if (strcmp(ma, ds.ds_SP[i].tenSP) == 0)
+		if (strcmp(ma, dssp.ds_SP[i].tenSP) == 0)
 		{
 			found = true;
 			system("cls");
@@ -132,7 +136,7 @@ void timSP_theoTenSP(DS_SanPham ds)
 				<< "Ma san pham" << setw(20) << "Gioi tinh"
 				<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
 			cout << i << ". ";
-			xuat_SanPham(ds.ds_SP[i]);
+			xuat_SanPham(dssp.ds_SP[i]);
 			break;
 		}
 	}
@@ -142,7 +146,7 @@ void timSP_theoTenSP(DS_SanPham ds)
 	}
 }
 
-void timSP_theoMaSP(DS_SanPham ds)
+void timSP_theoMaSP(DS_SanPham dssp)
 {
 	SanPham sp;
 	char maCanTim[30];
@@ -151,9 +155,9 @@ void timSP_theoMaSP(DS_SanPham ds)
 	cout << "Nhap ma san pham can tim: ";
 	cin.ignore();
 	cin.getline(maCanTim, 30);
-	for (int i = 1; i <= ds.soSanPham; i++)
+	for (int i = 1; i <= dssp.soSanPham; i++)
 	{
-		int ketQua = strcmp(maCanTim, ds.ds_SP[i].maSP); // Nếu giống nhau sẽ trả về kết quả bằng 0
+		int ketQua = strcmp(maCanTim, dssp.ds_SP[i].maSP); // Nếu giống nhau sẽ trả về kết quả bằng 0
 
 		if (ketQua == 0)
 		{
@@ -171,7 +175,7 @@ void timSP_theoMaSP(DS_SanPham ds)
 				<< ds.ds_SP[i].gioiTinhSP << setw(20) << ds.ds_SP[i].baoHanhSP << setw(20)
 				<< ds.ds_SP[i].giaTienSP << endl;*/
 			cout << i << ". ";
-			xuat_SanPham(ds.ds_SP[i]);
+			xuat_SanPham(dssp.ds_SP[i]);
 			break;
 		}
 	}
@@ -181,7 +185,7 @@ void timSP_theoMaSP(DS_SanPham ds)
 	}
 }
 
-void docFile(const char* tenfile, DS_SanPham& ds)
+void docFile(const char* tenfile, DS_SanPham& dssp)
 {
 	FILE* file;
 	errno_t file_in;
@@ -204,10 +208,10 @@ void docFile(const char* tenfile, DS_SanPham& ds)
 
 	while (fscanf(file, "%s %s %s %d %f\n", sp.maSP, sp.tenSP, sp.gioiTinhSP, &sp.baoHanhSP, &sp.giaTienSP) == 5) {
 		/*ds.ds_SP[i++] = sp;*/
-		ds.ds_SP[i] = sp;
+		dssp.ds_SP[i] = sp;
 		i++;
 	}
-	ds.soSanPham = i - 1;
+	dssp.soSanPham = i - 1;
 
 	/*
 	* Giải thích:
@@ -220,7 +224,7 @@ void docFile(const char* tenfile, DS_SanPham& ds)
 
 	fclose(file);
 }
-void xuatFile(const char* tenfile, const DS_SanPham& ds)
+void xuatFile(const char* tenfile, const DS_SanPham& dssp)
 {
 	FILE* file = nullptr;
 	errno_t file_in;
@@ -233,49 +237,51 @@ void xuatFile(const char* tenfile, const DS_SanPham& ds)
 
 	/*fprintf(file, "Ten san pham      Ma san pham           Gioi tinh            Bao hanh            Gia tien" << endl;);*/
 	/*fprintf(file, "MaSP\tTenSP\tGTSP\tBH\t\tGiaTien\n");*/
-	for (int i = 1; i <= ds.soSanPham; ++i)
+	for (int i = 1; i <= dssp.soSanPham; ++i)
 	{
-		fprintf(file, "%s \t%s \t%s \t\t%d \t\t%.2f\n", ds.ds_SP[i].maSP, ds.ds_SP[i].tenSP, ds.ds_SP[i].gioiTinhSP, ds.ds_SP[i].baoHanhSP, ds.ds_SP[i].giaTienSP);
+		fprintf(file, "%s \t%s \t%s \t\t%d \t\t%.2f\n", dssp.ds_SP[i].maSP, dssp.ds_SP[i].tenSP, dssp.ds_SP[i].gioiTinhSP, dssp.ds_SP[i].baoHanhSP, dssp.ds_SP[i].giaTienSP);
 	}
 	fclose(file);
 }
 
 DonHang dh;
 DS_DonHang dsdh;
-void mainmenu(DS_SanPham& ds)// menu chính 
+void mainmenu(DS_SanPham& dssp)// menu chính 
 {
-
 	int n;
 
 	system("cls");
 	cout << "\n                  CHUONG TRINH PHAN MEM BAN SAN PHAM QUAN AO ";
 	cout << "\n                                 From STU-IT";
-	cout << "\n                   Author : Luong Hieu Thuan and Le Nguyen Minh Thong";
+	cout << "\n                Author : Luong Hieu Thuan and Le Nguyen Minh Thong";
 	cout << "\n==================================MENU==========================================";
 	cout << "\n 1. Lam moi chuong trinh cua ban (Thay doi them, sua, xoa, sap xep,...)";
-	cout << "\n 2. Nhap file san pham da co( Doc du lieu file text)";
-	cout << "\n 3. Thao tac tao don hang( Tao don hang..)";
-	cout << "\n 0. de thoat chuong trinh.";
+	cout << "\n 2. Nhap file san pham da co (Doc du lieu file text)";
+	cout << "\n 3. Thao tac tao don hang (Tao don hang..)";
+	cout << "\n 0. De thoat chuong trinh.";
+	cout << endl;
+	cout << "Date time local:";
+	cout<< t->tm_hour<< ":" << t->tm_min << "|" << t->tm_mday << "/" << t->tm_mon + 1 << "/" << t->tm_year + 1900;
 	cout << "\n================================================================================";
 	cout << "\n Moi ban chon : ";
 	cin >> n;
 	if (n == 1)
 	{
-		menuLamMoi(ds);
+		menuLamMoi(dssp);
 	}
 	if (n == 2)
 	{
-		menuNhapXuatFile(ds);
+		menuNhapXuatFile(dssp);
 	}
 	if (n == 3)
 	{
 		system("cls");
 
-		menuDonHang(dsdh, dh, ds);
+		menuDonHang(dsdh, dh, dssp);
 	}
 	if (n == 5)
 	{
-		xuat_DS_SP(ds);
+		xuat_DS_SP(dssp);
 	}
 	else if (n == 0)
 	{
@@ -283,16 +289,16 @@ void mainmenu(DS_SanPham& ds)// menu chính
 	}
 
 }
-void menuNhapXuatFile(DS_SanPham& ds)// menu sau khi đọc file txt
+void menuNhapXuatFile(DS_SanPham& dssp)// menu sau khi đọc file txt
 {
 	system("cls");
-	docFile("DanhSach.txt", ds);
+	docFile("DanhSach.txt", dssp);
 	system("cls");
 	cout << "Doc file thanh cong, bam phim bat ki de tiep tuc.\n";
 	system("pause");
 	system("cls");
 
-	xuat_DS_SP(ds);
+	xuat_DS_SP(dssp);
 	cout << endl;
 	cout << "\n1. Them san pham.";
 	cout << "\n2. Xoa san pham.";
@@ -302,72 +308,76 @@ void menuNhapXuatFile(DS_SanPham& ds)// menu sau khi đọc file txt
 	cout << "\n6. Tim san pham theo ma san pham";
 	cout << "\n7. Tim san pham theo ten san pham";
 	cout << "\n0. Quay tro ve main menu";
+	cout << endl;
+	cout << "Date time local:";
+	cout << t->tm_hour << ":" << t->tm_min << "|" << t->tm_mday << "/" << t->tm_mon + 1 << "/" << t->tm_year + 1900;
 	int chon;
 	cout << "\nMoi ban nhap lua chon: ";
 	cin >> chon;
 	if (chon == 1)
 	{
 		system("cls");
-		xuat_DS_SP(ds);
+		xuat_DS_SP(dssp);
 		cout << "\nNhap them san pham moi.";
-		them_SanPham_Cuoi(ds);
-		xuat_DS_SP(ds);
-		menuSauKhiThaoTac(ds);
+		them_SanPham_Cuoi(dssp);
+		xuat_DS_SP(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 2)
 	{
 		system("cls");
-		xuat_DS_SP(ds);
+		xuat_DS_SP(dssp);
 		cout << "\nChon stt san pham can xoa: ";
 		cout << endl;
-		xoa_SanPham(ds);
-		xuat_DS_SP(ds);
-		menuSauKhiThaoTac(ds);
+		xoa_SanPham(dssp);
+		xuat_DS_SP(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 3)
 	{
 		system("cls");
-		xep_giaTienSP_tangDan(ds);
-		xuat_DS_SP(ds);
-		menuSauKhiThaoTac(ds);
+		xep_giaTienSP_tangDan(dssp);
+		xuat_DS_SP(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 4)
 	{
 		system("cls");
-		xep_giaTienSP_giamDan(ds);
-		menuSauKhiThaoTac(ds);
+		xep_giaTienSP_giamDan(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 5)
 	{
 		system("cls");
-		xuatFile("DanhSach.txt", ds);
+		xuatFile("DanhSach.txt", dssp);
 		system("cls");
 		cout << "Xuat file thanh cong, bam phim bat ki de tiep tuc.\n";
 		system("pause");
 		system("cls");
-		menuSauKhiThaoTac(ds);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 6)
 	{
 		system("cls");
-		timSP_theoMaSP(ds);
-		menuSauKhiThaoTac(ds);
+		timSP_theoMaSP(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 7)
 	{
 		system("cls");
-		timSP_theoTenSP(ds);
-		menuSauKhiThaoTac(ds);
+		timSP_theoTenSP(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 0)
 	{
-		mainmenu(ds);
+		mainmenu(dssp);
 	}
 
 }
-void menuSauKhiThaoTac(DS_SanPham& ds) // menu khi sau thực hiện đọc file hay nhập liệu
-{
-	xuat_DS_SP(ds);
+void menuSauKhiThaoTac(DS_SanPham& dssp) // menu khi sau thực hiện đọc file hay nhập liệu
+{   
+	
+	xuat_DS_SP(dssp);
 	cout << endl;
 	cout << "\n1. Them san pham.";
 	cout << "\n2. Xoa san pham.";
@@ -377,70 +387,75 @@ void menuSauKhiThaoTac(DS_SanPham& ds) // menu khi sau thực hiện đọc file
 	cout << "\n6. Tim san pham theo ma san pham";
 	cout << "\n7. Tim san pham theo ten san pham";
 	cout << "\n0. Quay tro ve main menu";
+	cout << endl;
+	cout << "Date time local:";
+	cout << t->tm_hour << ":" << t->tm_min << "|" << t->tm_mday << "/" << t->tm_mon + 1 << "/" << t->tm_year + 1900;
 	int chon;
 	cout << "\nMoi ban nhap lua chon: ";
 	cin >> chon;
 	if (chon == 1)
 	{
 		system("cls");
-		xuat_DS_SP(ds);
+		xuat_DS_SP(dssp);
 		cout << "\nNhap them san pham moi.";
-		them_SanPham_Cuoi(ds);
-		menuSauKhiThaoTac(ds);
+		them_SanPham_Cuoi(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 2)
 	{
 		system("cls");
-		xuat_DS_SP(ds);
+		xuat_DS_SP(dssp);
 		cout << "\nChon stt san pham can xoa: ";
 		cout << endl;
-		xoa_SanPham(ds);
-		menuSauKhiThaoTac(ds);
+		xoa_SanPham(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 3)
 	{
 		system("cls");
-		xep_giaTienSP_tangDan(ds);
-		menuSauKhiThaoTac(ds);
+		xep_giaTienSP_tangDan(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 4)
 	{
 		system("cls");
-		xep_giaTienSP_giamDan(ds);
-		menuSauKhiThaoTac(ds);
+		xep_giaTienSP_giamDan(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 5)
 	{
 		system("cls");
-		xuatFile("DanhSach.txt", ds);
+		xuatFile("DanhSach.txt", dssp);
 		system("cls");
 		cout << "Xuat file thanh cong, bam phim bat ki de tiep tuc.\n";
 		system("pause");
 		system("cls");
-		menuSauKhiThaoTac(ds);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 6)
 	{
 		system("cls");
-		timSP_theoMaSP(ds);
-		menuSauKhiThaoTac(ds);
+		timSP_theoMaSP(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 7)
 	{
 		system("cls");
-		timSP_theoTenSP(ds);
-		menuSauKhiThaoTac(ds);
+		timSP_theoTenSP(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 0)
 	{
-		mainmenu(ds);
+		mainmenu(dssp);
 	}
 }
-void menuLamMoi(DS_SanPham& ds)// menu gốc 
+void menuLamMoi(DS_SanPham& dssp)// menu gốc 
 {
+	
 	system("cls");
-	nhap_DS_SP(ds);
-	xuat_DS_SP(ds);
+
+	nhap_DS_SP(dssp);
+	xuat_DS_SP(dssp);
 	cout << endl;
 	cout << "\n1. Them san pham.";
 	cout << "\n2. Xoa san pham.";
@@ -450,65 +465,69 @@ void menuLamMoi(DS_SanPham& ds)// menu gốc
 	cout << "\n6. Tim san pham theo ma san pham";
 	cout << "\n7. Tim san pham theo ten san pham";
 	cout << "\n0. Quay tro ve main menu";
+
+	cout << endl;
+	cout << "Date time local:";
+	cout << t->tm_hour << ":" << t->tm_min << "|" << t->tm_mday << "/" << t->tm_mon + 1 << "/" << t->tm_year + 1900;
 	int chon;
 	cout << "\nMoi ban nhap lua chon: ";
 	cin >> chon;
 	if (chon == 1)
 	{
 		system("cls");
-		xuat_DS_SP(ds);
+		xuat_DS_SP(dssp);
 		cout << "\nNhap them san pham moi.";
-		them_SanPham_Cuoi(ds);
-		menuSauKhiThaoTac(ds);
+		them_SanPham_Cuoi(dssp);
+		menuSauKhiThaoTac(dssp);
 
 	}
 	else if (chon == 2)
 	{
 		system("cls");
-		xuat_DS_SP(ds);
+		xuat_DS_SP(dssp);
 		cout << "\nChon stt san pham can xoa: ";
 		cout << endl;
-		xoa_SanPham(ds);
-		menuSauKhiThaoTac(ds);
+		xoa_SanPham(dssp);
+		menuSauKhiThaoTac(dssp);
 
 	}
 	else if (chon == 3)
 	{
 		system("cls");
-		xep_giaTienSP_tangDan(ds);
-		menuSauKhiThaoTac(ds);
+		xep_giaTienSP_tangDan(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 4)
 	{
 		system("cls");
-		xep_giaTienSP_giamDan(ds);
-		menuSauKhiThaoTac(ds);
+		xep_giaTienSP_giamDan(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 5)
 	{
 		system("cls");
-		xuatFile("DanhSach.txt", ds);
+		xuatFile("DanhSach.txt", dssp);
 		system("cls");
 		cout << "Xuat file thanh cong, bam phim bat ki de tiep tuc.\n";
 		system("pause");
 		system("cls");
-		menuSauKhiThaoTac(ds);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 6)
 	{
 		system("cls");
-		timSP_theoMaSP(ds);
-		menuSauKhiThaoTac(ds);
+		timSP_theoMaSP(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 7)
 	{
 		system("cls");
-		timSP_theoTenSP(ds);
-		menuSauKhiThaoTac(ds);
+		timSP_theoTenSP(dssp);
+		menuSauKhiThaoTac(dssp);
 	}
 	else if (chon == 0)
 	{
-		mainmenu(ds);
+		mainmenu(dssp);
 	}
 }
 
@@ -530,6 +549,7 @@ void themDHvaoDS(DS_DonHang& dsdh, DonHang& dh)
 
 void xuat_DonHang(DonHang dh)
 {
+	float tongtien = 0;
 	cout << setw(10)<< "Ma Khach Hang:" << setw(5) << dh.maDH << setw(20)<< "Ten khach hang:"  << setw(6) << dh.tenKH << setw(25) 
 		<< "So luong san pham:"  << setw(3) << dh.soLuongSanPham << endl;
 	cout << "\n====================================================================================================";
@@ -538,27 +558,31 @@ void xuat_DonHang(DonHang dh)
 	cout << setw(0) << "STT" << setw(17) << "Ten san pham" << setw(17) << "Ma san pham" << setw(20) << "Gioi tinh"
 		<< setw(20) << "Bao hanh" << setw(20) << "Gia tien" << endl;
 	for (int i = 1; i <= dh.soLuongSanPham; i++)
-	{
+	{   
 		cout << i << ". ";
 		xuat_SanPham(dh.ds_sp[i]);
+		tongtien = tongtien + dh.ds_sp[i].giaTienSP;
 		cout << endl;
 	}
+	cout << "\n Tong gia tien cua don hang la :" << tongtien;
 	cout << "\n====================================================================================================";
 	cout << endl;
 
 
 	//cout << setw(10) << dh.maDH << setw(20) << dh.tenKH << setw(20) << dh.soLuongSanPham << endl;
 }
-void xuat_DS_DH(DS_DonHang& ds)
+void xuat_DS_DH(DS_DonHang& dsdh)
 {
 	cout << "\n====================================================================================================";
 	cout << endl;
-	cout << "Co " << ds.soLuongDonHang << " trong danh sach don hang." << endl;
-	cout << setw(0) << "STT" << setw(17) << "Ma don hang" << setw(17) << "Ten khach hang" << setw(20) << "So luong san pham" << endl;
-	for (int i = 1; i <= ds.soLuongDonHang; i++)
+	cout << "Co " << dsdh.soLuongDonHang << " trong danh sach don hang." << endl;
+	cout << setw(0) << "STT" << setw(17) << "Ma don hang" << setw(17) << "Ten khach hang" << setw(20) << "So luong san pham"
+		<< setw(7) << t->tm_hour << ":" << t->tm_min << "|" << t->tm_mday << "/" << t->tm_mon + 1 << "/" << t->tm_year + 1900;
+	cout << endl;
+	for (int i = 1; i <= dsdh.soLuongDonHang; i++)
 	{
 		cout << i << ". ";
-		cout << setw(13) << ds.ds_dh[i].maDH << setw(15) << ds.ds_dh[i].tenKH << setw(17) << ds.ds_dh[i].soLuongSanPham;
+		cout << setw(13) << dsdh.ds_dh[i].maDH << setw(15) << dsdh.ds_dh[i].tenKH << setw(17) << dsdh.ds_dh[i].soLuongSanPham;
 		cout << endl;
 	}
 	cout << "\n====================================================================================================";
@@ -586,12 +610,29 @@ void muaHang(DS_DonHang& dsdh, DS_SanPham& dssp)
 	cin.ignore();
 	cout << "\nNhap ten khach hang: ";
 	cin.getline(dh.tenKH, 30);
-
-	dh.maDH = 1000 + rand() % 9000; //chọn 1 số có 4 chữ số ngẫu nhiên để làm mã đơn hàng
-
-
-
+	time_t hientai = time(0);
+	tm* t = localtime(&hientai);
+	dh.maDH = 10000+t->tm_hour+ t->tm_min + rand() % 90000;
+	//chọn 1 số có 5 chữ số ngẫu nhiên để làm mã đơn hàng + phút và giờ hiện tại
+	// trùng thế nào được nữa 
 	themDHvaoDS(dsdh, dh);
+}
+void xoa_DonHang(DS_DonHang& dsdh)
+{
+	int pos;
+	cout << "\n Nhap vi tri Don Hang can xoa co tren danh sach";
+	cout << endl;
+	cin >> pos;
+	while (pos<1 || pos > dsdh.soLuongDonHang)
+	{
+		cout << "\n So nhap khong co trong danh sach, moi nhap lai ~~";
+		cin >> pos;
+	}
+	for (int i = pos; i <= dsdh.soLuongDonHang; i++)
+	{
+		dsdh.ds_dh[i] = dsdh.ds_dh[i + 1];
+	}
+	dsdh.soLuongDonHang--;
 }
 
 void menuDonHang(DS_DonHang& dsdh, DonHang& dh, DS_SanPham& dssp)
@@ -601,7 +642,11 @@ void menuDonHang(DS_DonHang& dsdh, DonHang& dh, DS_SanPham& dssp)
 	cout << "\n1. Tao don hang + Them san pham vao don hang.";
 	cout << "\n2. Hien thi chi tiet don hang.";
 	cout << "\n3. In danh sach cac don hang.";
-	cout << "\n4. Thoat";
+	cout << "\n4. Xoa don hang trong danh sach";
+
+	cout << endl;
+	cout << "Date time local:";
+	cout << t->tm_hour << ":" << t->tm_min << "|" << t->tm_mday << "/" << t->tm_mon + 1 << "/" << t->tm_year + 1900;
 
 	int chon;
 	cout << "\nMoi ban nhap lua chon: ";
@@ -626,7 +671,7 @@ void menuDonHang(DS_DonHang& dsdh, DonHang& dh, DS_SanPham& dssp)
 		int maDon;
 		cout << "\nNhap ma don hang can hien thi: ";
 		cin >> maDon;
-
+		system("cls");
 		for (int i = 1; i <= dsdh.soLuongDonHang; i++)
 		{
 			if (maDon == dsdh.ds_dh[i].maDH)
@@ -646,6 +691,15 @@ void menuDonHang(DS_DonHang& dsdh, DonHang& dh, DS_SanPham& dssp)
 	}
 	if (chon == 4)
 	{
+		system("cls");
+		xuat_DS_DH(dsdh);
+
+		xoa_DonHang(dsdh);
+
+        system("cls");
+		xuat_DS_DH(dsdh);
+		cout << "\n Da xoa don hang thanh cong";
+		menuDonHang(dsdh, dh, dssp);
 
 	}
 }
