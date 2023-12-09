@@ -3,9 +3,11 @@
 Đơn hàng : 
 Xóa Đơn Hàng
 Tính tổng tiền
-Chỉnh sửa Đơn Hàng( nếu được ko thì thui nếu quá tốn thời gian)
-Thống kê :
+Chỉnh sửa Đơn Hàng
+Thống kê : 
+( thống kê dựa trên tất cả sản phẩm đuọc bán ra dựa vào đơn hàng )
 Sản phẩm nào bán nhiều nhất 
+Sản phẩm nào bán ít nhất 
 Sản phẩm nam hay nữ cái nào bán nhiều hơn 
 Top 5 Khách hàng nào có tổng số tiền mua nhiều nhất
   ![image](https://github.com/DEkevil/Informatics-project/assets/148349855/357b1638-7bcb-4edd-b2ba-b756ff1dc4da)
